@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+    
+    <script>
+        function setup() {
+            createCanvas(500,500);
+            //ears
+            fill(25,25,25);//black
+            ellipse(270,130,50,50);
+            ellipse(410,130,50,50);
+            
+            //legs
+            ellipse(290,400,70,50);
+            ellipse(400,400,70,50);
+            
+            //body
+            fill(255,255,255);//white
+            ellipse(345,295,190,220);
+            
+            //face shape
+            fill(255,255,255);//white
+            ellipse(340,160,150,140);
+            
+            //lefthand
+            fill(25,25,25);//black
+            ellipse(290,255,75,50);
+            fill(85,240,96);
+            
+            //bamboo
+            strokeWeight(4);
+            stroke(91,255,58);//green
+            rect(370,197,15,135)
+            
+            //right hand
+            noStroke();
+            fill(25,25,25)//black
+            ellipse(400,255,75,50);
+            
+            //inside face
+            ellipse(305,160,43,50);//lefteye
+            ellipse(375,160,43,50);//righteye
+            ellipse(340,185,30,20);//nose
+            strokeWeight(2);
+            stroke(21,21,21)//black
+            line(325,210,340,207);//mouth
+            line(340,207,355,210);//mouth
+            //eyeball/left(white dot)
+            strokeWeight(7);
+            stroke(255,255,255);
+            point(310,150);
+            //eyeball/right(white dot)
+            strokeWeight(7);
+            stroke(255,255,255);
+            point(370,150);
+            
+            //leaf of bamboo
+            fill(102,255,102);
+            strokeWeight(5)
+            stroke(12,245,102);
+            beginShape(TRIANGLES);
+            vertex(387,210);
+            vertex(425, 200);
+            vertex(400, 215);
+            endShape();
+            
+            //stripes on the bamboo
+            strokeWeight(5);
+            stroke(66,182,53);//green
+            line(370,220,385,220);
+            line(370,285,385,285);
+            line(370,315,385,315);
+            
+            //text(Panda)
+            textSize(32);
+            text("PANDA", 212, 350);
+            
+           
+            
+            
+        }
+
+        function draw() {
+            
+        }
+    </script>
+</head>
+
+<body>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/xiurongy3506/p5js/blob/gh-pages/zoog.html?footer=0"></script>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
+
+
+</html>
