@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+
+    <script>
+        function setup() {
+            createCanvas(500, 500);
+
+        }
+
+        function draw() {
+           
+        }
+        //point
+        function mouseMoved() {
+            strokeWeight(5);
+            stroke(mouseX, mouseY,0);//amout of red is control by mouseX; amount of blue is controlled by mouseY.
+            point(mouseX,mouseY);//dots formed by moving the mouse.
+
+        }
+        //arc
+        function mouseDragged() {
+            strokeWeight(2);
+            fill(0,mouseX,mouseY);//color depends on mouseX and mouseY.
+            stroke(random(100, 255), random(100, 255), random(100, 255));//random light strokes
+            arc(mouseX+random(40),mouseY+random(20),20, 20, 0, PI+QUARTER_PI, CHORD);//arcs are following the mouse when mousedragged.
+        }
+
+        //circle
+        function mousePressed() {
+            clear()//clears the parts of the circle.
+            fill(random(255), random(255), random(255));//random color
+            stroke(mouseX,0,mouseY);//the stroke of the circle depends on where the mouse is.
+            ellipse(width /2, height / 2, mouseX,mouseY);//circle will always be in the center of the canvas; size decided by 
+
+        }
+        
+        
+    </script>
+</head>
+
+<body>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/xiurongy3506/p5js/blob/gh-pages/InteractionProject.html?footer=0"></script>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
+
+</html>
