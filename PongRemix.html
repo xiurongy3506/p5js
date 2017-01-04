@@ -33,7 +33,12 @@
       
        //when any key is pressed, the game restarts
         function KeyPressed() {
-          loop()
+          if (KeyCode = 32){//when space is Pressed, it restarts the game
+              loop(); 
+          }
+          else {
+              return false
+          }
         }
 
         function draw() {
@@ -81,7 +86,7 @@
                 else { //  when ball is on the left or right side of the paddle
                     ballY = 5 // start the ball from the top
                     lives = lives -1; //lose one live
-                    if (lives <1) {  //if there's no life for playing the game
+                    if (lives <1) {  //if there's no life for playing the game 
                       background(255, 0, 0);//red backkground
                       textSize(35);//size of word
                       text("GAME OVER!", width / 2.5, height / 2);//displays "GAME OVER!"
