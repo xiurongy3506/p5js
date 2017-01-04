@@ -25,10 +25,15 @@
 
         function setup() {
             createCanvas(800, 600); // canvas size
-          //  noCursor(); // hides the mouse
+            noCursor(); // hides the mouse
             ballX = random(width/6, width/1.2);  //start off with random x-position,
             ballY = random(height/6, height/2); // random y-position
 
+        }
+      
+       //when any key is pressed, the game restarts
+        function KeyPressed() {
+          loop()
         }
 
         function draw() {
@@ -99,6 +104,7 @@
         function mousePressed() {
           pause =!pause // toggling the state of pause
         }
+      
         
        
     </script>
