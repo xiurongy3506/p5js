@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+
+    <script>
+        var x = 250; //position
+        var y = 400; //of the circle
+        var score = 1; //score earned when hitting the box
+        var blocks = []; //Array:holds the amount of the moving block
+        var boxR; //red color of box
+        var boxG; //green color of box
+        var boxB; //blue color of box
+      
+
+        function setup() {
+            createCanvas(500, 500);
+            blocks.push(new Block(random(255), random(255), random(255))); //starting with one block moving
+
+        }
+
+        function draw() {
+                background(70, 130, 210); 
+                
+                //score
+                textSize(25); //word size
+                strokeWeight(2); //outline
+                fill(255); //white
+                text(("Score: " + score), width/15, height/12); //shows the score 
+                
+                 if (score%4 == 0){  //When the #of the score is divisible by 4
+                    blocks.splice(1,1); //Make the block start with one
+                    stop();                                                 //stops the following word
+                    text("Complexity increased ", width/3.5, height/2.4)    //and display "complexity "increased" until another score is gained
+                    }
+                
+                //Display note
+                textSize(20) //word size
+                stroke(50,100,200) //blue-violet outline
+                text("For every 4 score gained, the ", width/3, height/12); //words displayed
+                text("speed will increase starting with one block.", width/15, height/8) //words displayed
+                
+                //Controlls the movement of the circle
+                if (keyIsDown(LEFT_ARROW))
+                    x -= 5;
+
+                if (keyIsDown(RIGHT_ARROW))
+                    x += 5;
+
+                if (keyIsDown(UP_ARROW))
+                    y -= 5;
+
+                if (keyIsDown(DOWN_ARROW))
+                    y += 5;
+
+                //draws the circle
+                ellipse(x, y, 30, 30);
+                
+                //go through each elements in the array and move, display and check if colliding with block
+                for (var i = 0; i < blocks.length; i++) {
+                    blocks[i].move();
+                    blocks[i].display();
+                    blocks[i].checkCollide();
+                }
+            
+            //box
+            fill(boxR, boxG, boxB); //colors of box
+            rect((width / 2) - 20, 85, 30, 30); //draws the box
+            if ((x + 15) > (width / 2) - 20 && (y + 15) > 85 && (x - 15) < (((width / 2) - 20) + 30) && (y) < (85 + 30)) { //when circle touches box
+                boxR = random(255); //random amount of red
+                boxG = random(255); //random amount of green
+                boxB = random(255); //random amount of blue
+                score = score + 1; //add one to score
+                blocks.push(new Block); //another block appear
+                x = 250; //Circle goes back
+                y = 450; // to it's original position
+            }
+            
+      }
+
+        
+        // Block
+        function Block(r, g, b) { //a class teaching how to make the moving blocks
+            this.r = r;  // Controlls the amount of red, 
+            this.g = g;  //  green
+            this.b = b;  // and blue
+            
+            this.x = random(width); //starts with random horizontal placement
+            this.y = random(110, 300); //blocks in between box and circle
+            this.speed = random((score / 2), 4); //speed of the block
+
+            this.move = function() {
+                this.x += this.speed; //controlls how fast block moves horizontally
+                if (this.x >= width) {  // Allows block to 
+                    this.x = 0;         // be constantly muoving
+                }
+            }
+
+            this.display = function() { //displaying the block
+                stroke(r, g, b); //Color of the outline
+                fill(255); //block = white color
+                rect(this.x, this.y, 60, 15); //draws the block
+            }
+
+            this.checkCollide = function() { //checking if cirlce touches block
+                if ((x+12)> this.x && (x-12) < (this.x + 60) && (y+12) > this.y && (y-12) < (this.y + 15)) { //when circle touches block
+                    noLoop(); //ends action
+                    textSize(50); //word size
+                    fill(255, 0, 0); //red color 
+                    text("Game Over ", width/4, height/2); //display"game over"
+                }
+            }
+            
+            
+        }
+    </script>
+</head>
+
+<body>
+    <form><input TYPE="button" onClick="history.go(0)" value="Reset"></form>
+
+   <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/xiurongy3506/p5js/blob/gh-pages/Object-Project.html?footer=0"></script>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
+
+</html>
