@@ -18,11 +18,20 @@
         function setup() {
             createCanvas(500, 500);
             blocks.push(new Block(random(255), random(255), random(255))); //starting with one block moving
-
+            
         }
 
         function draw() {
                 background(70, 130, 210); 
+                
+                if (x < 0 || x > width) {
+                    x = x * -1; // switch X direction
+                }
+          
+                 // top edge
+                 if (y< 0 || y> height) {
+                     y = y * -1;
+                }
                 
                 //score
                 textSize(25); //word size
@@ -122,7 +131,7 @@
     <form><input TYPE="button" onClick="history.go(0)" value="Reset"></form>
 
    <div id="code" class="container-fluid">
-        <script src="https://gist-it.appspot.com/github/xiurongy3506/p5js/blob/gh-pages/Object-Project.html?footer=0"></script>
+        <script src="https://gist-it.appspot.com/github/xiurongy3506/p5js/blob/gh-pages/Object-roject.html?footer=0"></script>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
